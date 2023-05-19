@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Satellite Image Classification</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container">
+    <h1>Image Classification Result</h1>
+    <div>
+        <img src="{{ url }}" alt="Image" class="img-thumbnail" width="300">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Probability</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for class_name, prob in class_probs.items() %}
+                    <tr>
+                        <td>{{ class_name }}</td>
+                        <td>{{ "%.4f"|format(prob) }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>            
+        </table>
+        <a href="/" class="btn btn-primary">Try another image</a>
+    </div>
+</body>
+</html>
