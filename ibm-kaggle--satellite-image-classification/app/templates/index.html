@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Satellite Image Classification</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container">
+    <h1>Image Classification</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form method="POST" action="/" id="classification-form">
+        <div class="form-group">
+            <label for="url">Enter Image URL:</label><br>
+            <input type="text" id="url" name="url" class="form-control" required><br>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $('#classification-form').on('submit', function() {
+            $(this).find('button').text('Processing...').attr('disabled', 'disabled');
+        });
+    </script>
+</body>
+</html>
